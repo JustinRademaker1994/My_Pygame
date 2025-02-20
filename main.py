@@ -105,15 +105,7 @@ while running:
     if ball_y < 0:
        ball_speed_y = abs(ball_speed_y)
     if ball_y + BALL_HEIGHT > SCREEN_HEIGHT:
-       ball_speed_y = abs(ball_speed_y) * -1
-
-    # bounce off paddle
-    if (ball_x + BALL_WIDTH > paddle_x and
-        ball_x < paddle_x + PADDLE_WIDTH and
-        ball_y + PADDLE_HEIGHT > paddle_y and
-        ball_y < paddle_y + PADDLE_HEIGHT):
-       ball_speed_y = abs(ball_speed_y) * -1
-       
+       ball_speed_y = abs(ball_speed_y) * -1      
 
     # move paddle
     if keys[pygame.K_d] and paddle_x <= SCREEN_WIDTH - PADDLE_WIDTH:
@@ -130,6 +122,19 @@ while running:
        ball_speed_y = 0
        game_status_msg = "You lost!"
 
+      # bounce of paddle
+    if (ball_x + BALL_WIDTH > paddle_x and
+        ball_x < paddle_x + PADDLE_WIDTH and
+        ball_y + PADDLE_HEIGHT > paddle_y and
+        ball_y < paddle_y + PADDLE_HEIGHT):
+       ball_speed_y = abs(ball_speed_y) * -1
+
+      # bounce of brick
+    if (ball_x + BALL_WIDTH > brick_x and
+        ball_x < brick_x + BRICK_WIDTH and
+        ball_y + BRICK_HEIGHT > brick_y and
+        ball_y < brick_y + BRICK_HEIGHT):
+       print('brick touched at ball_x = ' + str(ball_x) + ' and ball_y = ' + str(ball_y))
 
 
     # 
