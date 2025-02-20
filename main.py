@@ -136,6 +136,8 @@ while running:
         ball_y < brick_y + BRICK_HEIGHT):
        print('brick touched at ball_x = ' + str(ball_x) + ' and ball_y = ' + str(ball_y))
 
+       if (ball_speed_y > 0 and ball_y < brick_y):
+          ball_speed_y = abs(ball_speed_y) * -1
 
     # 
     # draw everything
