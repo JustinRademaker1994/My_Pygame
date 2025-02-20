@@ -15,6 +15,9 @@ BALL_WIDTH = 16       # ballsize in x-direction in pixels
 BALL_HEIGHT = 16      # ballsize in y-direction in pixels
 PADDLE_WIDTH = 144
 PADDLE_HEIGHT = 32
+BRICK_WIDTH = 96
+BRICK_HEIGHT = 32
+
 
 ball_x = 0            # x-position of ball in pixels
 ball_y = 0
@@ -25,6 +28,8 @@ paddle_y = SCREEN_HEIGHT - PADDLE_HEIGHT
 paddle_speed_right = 10
 paddle_speed_left = -1 * paddle_speed_right
 game_status_msg = "Controls: A and D"
+brick_x = 20
+brick_y = 20
 #
 # init game
 #
@@ -51,15 +56,19 @@ spritesheet = pygame.image.load('Breakout_Tile_Free.png').convert_alpha()
 # Creates a new surface for the ball of 64 by 64 pixels. The format will include the alpha values
 ball_img = pygame.Surface((64, 64), pygame.SRCALPHA)  
 paddle_img = pygame.Surface((243, 64), pygame.SRCALPHA)
+brick_img = pygame.Surface((384, 128), pygame.SRCALPHA)
 
 
 # draws the ball from the specific coordinates of the spritesheet on the created surface, with a width and height of 64 pixels
 ball_img.blit(spritesheet, (0, 0), (1403, 652, 64, 64))
 paddle_img.blit(spritesheet, (0, 0), (1158, 396, 243, 64))
+brick_img.blit(spritesheet, (0, 0), (772, 390, 384, 128))
 
 # Scales the surface to the desired width and height
 ball_img = pygame.transform.scale(ball_img, (BALL_WIDTH, BALL_HEIGHT))  
 paddle_img = pygame.transform.scale(paddle_img, (PADDLE_WIDTH, PADDLE_HEIGHT))
+brick_img = pygame.transform.scale(brick_img, (BRICK_WIDTH, BRICK_HEIGHT))
+
 
 #
 # game loop
@@ -136,7 +145,8 @@ while running:
     screen.blit(paddle_img, (paddle_x, paddle_y))
     game_status_img = font.render(game_status_msg, True, 'green')
     screen.blit(game_status_img, (SCREEN_WIDTH / 2 - game_status_img.get_width() / 2, 0))
-    
+    screen.blit(brick_img, (brick_x, brick_y))
+
     # show screen
     pygame.display.flip() 
 
