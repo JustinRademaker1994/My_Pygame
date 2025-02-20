@@ -28,12 +28,15 @@ paddle_y = SCREEN_HEIGHT - PADDLE_HEIGHT
 paddle_speed_right = 10
 paddle_speed_left = -1 * paddle_speed_right
 game_status_msg = "Controls: A and D"
-brick_x1 = 30
-brick_y1 = 150
-brick_x2 = brick_x1 + BRICK_WIDTH
-brick_y2 = brick_y1
-bricks_x = [brick_x1, brick_x2]
-bricks_y = [brick_y1, brick_y2]
+bricks_x = []
+bricks_y = []
+
+# Fills the bricks lists
+for i in range(0, 2):
+   for j in range(0, 10):
+      bricks_y.append(150 + i * BRICK_HEIGHT)
+      bricks_x.append(30 + j * BRICK_WIDTH)
+
 
 #
 # init game
