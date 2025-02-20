@@ -173,8 +173,9 @@ while running:
     screen.blit(paddle_img, (paddle_x, paddle_y))
     game_status_img = font.render(game_status_msg, True, 'green')
     screen.blit(game_status_img, (SCREEN_WIDTH / 2 - game_status_img.get_width() / 2, 0))
-    screen.blit(brick_img, (brick_x1, brick_y1))
-    screen.blit(brick_img2, (brick_x2, brick_y2))
+
+    for i in range(0, len(bricks_x)):
+       screen.blit(brick_img, (bricks_x[i], bricks_y[i]))
 
     # show screen
     pygame.display.flip() 
