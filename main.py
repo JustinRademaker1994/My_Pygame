@@ -22,6 +22,8 @@ ball_speed_x = 6      # speed of ball in x-direction in pixels per frame
 ball_speed_y = 6
 paddle_x = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2 
 paddle_y = SCREEN_HEIGHT - PADDLE_HEIGHT
+paddle_speed_right = 10
+paddle_speed_left = -1 * paddle_speed_right
 #
 # init game
 #
@@ -94,6 +96,13 @@ while running:
        ball_speed_y = abs(ball_speed_y)
     if ball_y + BALL_HEIGHT > SCREEN_HEIGHT:
        ball_speed_y = abs(ball_speed_y) * -1
+
+    # move paddle
+    if keys[pygame.K_d]:
+       paddle_x += paddle_speed_right
+    if keys[pygame.K_a]:
+       paddle_x += paddle_speed_left
+       
 
     # 
     # handle collisions
