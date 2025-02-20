@@ -32,6 +32,9 @@ brick_x1 = 30
 brick_y1 = 150
 brick_x2 = brick_x1 + BRICK_WIDTH
 brick_y2 = brick_y1
+bricks_x = [brick_x1, brick_x2]
+bricks_y = [brick_y1, brick_y2]
+
 #
 # init game
 #
