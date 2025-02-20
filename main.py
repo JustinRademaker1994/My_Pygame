@@ -9,14 +9,15 @@ import pygame, time
 #
 
 FPS = 30 # Frames Per Second
-SCREEN_WIDTH = 1280   # screensize in x-direction
-SCREEN_HEIGHT = 720   # screensize in y-direction
+SCREEN_WIDTH = 1280  * 0.8   # screensize in x-direction
+SCREEN_HEIGHT = 720 * 0.8   # screensize in y-direction
 BALL_WIDTH = 16       # ballsize in x-direction in pixels
 BALL_HEIGHT = 16      # ballsize in y-direction in pixels
 
 ball_x = 0            # x-position of ball in pixels
+ball_y = 0
 ball_speed_x = 6      # speed of ball in x-direction in pixels per frame
-
+ball_speed_y = 6
 #
 # init game
 #
@@ -28,7 +29,7 @@ pygame.init()
 font = pygame.font.SysFont('default', 64)
 
 # This initializes the display and returns a 'Surface' which can be drawn on. 
-screen = pygame.display.set_mode((SCREEN_WIDTH * 0.8, SCREEN_HEIGHT * 0.8))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Creates the object that track time and control the games framerate.
 fps_clock = pygame.time.Clock()
@@ -73,12 +74,18 @@ while running:
 
     # move ball
     ball_x = ball_x + ball_speed_x
+    ball_y = ball_y + ball_speed_y
 
     # bounce ball
     if ball_x < 0 :                           # If the ball is at the left edge of the screen:
       ball_speed_x = abs(ball_speed_x)        # Make the ballspeed positive (moving to the right)
     if ball_x + BALL_WIDTH > SCREEN_WIDTH:    # If the right side of the ball exceeds the right of the screen:
       ball_speed_x = abs(ball_speed_x) * -1   # Make the ballspeed negative (moving to the left)
+
+    if ball_y < 0:
+       ball_speed_y = abs(ball_speed_y)
+    if ball_y + BALL_HEIGHT > SCREEN_HEIGHT:
+       ball_speed_y = abs(ball_speed_y) * -1
 
     # 
     # handle collisions
@@ -93,7 +100,7 @@ while running:
     screen.set_alpha(0)                     # Makes the background fully transparant 
 
     # draw ball
-    screen.blit(ball_img, (ball_x, 0))      # draws the ball on the screen surface on the current coordinates of the ball
+    screen.blit(ball_img, (ball_x, ball_y))      # draws the ball on the screen surface on the current coordinates of the ball
     
     # show screen
     pygame.display.flip() 
