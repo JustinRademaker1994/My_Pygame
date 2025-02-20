@@ -20,7 +20,7 @@ BRICK_HEIGHT = 32
 
 
 ball_x = 0            # x-position of ball in pixels
-ball_y = 0
+ball_y = 200
 ball_speed_x = 6      # speed of ball in x-direction in pixels per frame
 ball_speed_y = 6
 paddle_x = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2 
@@ -158,6 +158,8 @@ while running:
         bricks_y.pop(i);
         break
 
+    if len(bricks_x) == 0:
+       game_status_msg = "You win!"
     # 
     # draw everything
     #
@@ -169,11 +171,12 @@ while running:
     # draw ball
     screen.blit(ball_img, (ball_x, ball_y))      # draws the ball on the screen surface on the current coordinates of the ball
     screen.blit(paddle_img, (paddle_x, paddle_y))
-    game_status_img = font.render(game_status_msg, True, 'green')
-    screen.blit(game_status_img, (SCREEN_WIDTH / 2 - game_status_img.get_width() / 2, 0))
 
     for i in range(0, len(bricks_x)):
        screen.blit(brick_img, (bricks_x[i], bricks_y[i]))
+
+    game_status_img = font.render(game_status_msg, True, 'green')
+    screen.blit(game_status_img, (SCREEN_WIDTH / 2 - game_status_img.get_width() / 2, 0))
 
     # show screen
     pygame.display.flip() 
