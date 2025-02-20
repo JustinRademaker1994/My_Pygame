@@ -97,6 +97,14 @@ while running:
     if ball_y + BALL_HEIGHT > SCREEN_HEIGHT:
        ball_speed_y = abs(ball_speed_y) * -1
 
+    # bounce off paddle
+    if (ball_x + BALL_WIDTH > paddle_x and
+        ball_x < paddle_x + PADDLE_WIDTH and
+        ball_y + PADDLE_HEIGHT > paddle_y and
+        ball_y < paddle_y + PADDLE_HEIGHT):
+       ball_speed_y = abs(ball_speed_y) * -1
+       
+
     # move paddle
     if keys[pygame.K_d] and paddle_x <= SCREEN_WIDTH - PADDLE_WIDTH:
        paddle_x += paddle_speed_right
