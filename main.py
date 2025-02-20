@@ -24,6 +24,7 @@ paddle_x = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2
 paddle_y = SCREEN_HEIGHT - PADDLE_HEIGHT
 paddle_speed_right = 10
 paddle_speed_left = -1 * paddle_speed_right
+game_status_msg = "Controls: A and D"
 #
 # init game
 #
@@ -115,7 +116,13 @@ while running:
     # 
     # handle collisions
     #
-    
+    if ball_y + BALL_HEIGHT >= SCREEN_HEIGHT:
+       ball_speed_x = 0
+       ball_speed_y = 0
+       game_status_msg = "You lost!"
+
+
+
     # 
     # draw everything
     #
@@ -127,6 +134,8 @@ while running:
     # draw ball
     screen.blit(ball_img, (ball_x, ball_y))      # draws the ball on the screen surface on the current coordinates of the ball
     screen.blit(paddle_img, (paddle_x, paddle_y))
+    game_status_img = font.render(game_status_msg, True, 'green')
+    screen.blit(game_status_img, (SCREEN_WIDTH / 2 - game_status_img.get_width() / 2, 0))
     
     # show screen
     pygame.display.flip() 
