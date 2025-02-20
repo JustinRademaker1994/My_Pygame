@@ -138,7 +138,12 @@ while running:
 
        if (ball_speed_y > 0 and ball_y < brick_y):
           ball_speed_y = abs(ball_speed_y) * -1
-
+       elif (ball_speed_y < 0 and ball_y + BALL_WIDTH > brick_y + BRICK_HEIGHT):
+          ball_speed_y = abs(ball_speed_y)
+       elif (ball_speed_x > 0 and ball_x < brick_x):
+          ball_speed_x = abs(ball_speed_x) * -1
+       elif (ball_speed_x < 0 and ball_x + BALL_WIDTH > brick_x + BRICK_WIDTH):
+          ball_speed_x = abs(ball_speed_x)
     # 
     # draw everything
     #
