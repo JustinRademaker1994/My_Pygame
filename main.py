@@ -98,9 +98,9 @@ while running:
        ball_speed_y = abs(ball_speed_y) * -1
 
     # move paddle
-    if keys[pygame.K_d]:
+    if keys[pygame.K_d] and paddle_x <= SCREEN_WIDTH - PADDLE_WIDTH:
        paddle_x += paddle_speed_right
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and paddle_x >= 0:
        paddle_x += paddle_speed_left
        
 
