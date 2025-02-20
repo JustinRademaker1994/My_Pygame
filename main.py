@@ -154,6 +154,9 @@ while running:
             ball_speed_x = abs(ball_speed_x) * -1
         elif (ball_speed_x < 0 and ball_x + BALL_WIDTH > bricks_x[i] + BRICK_WIDTH):
             ball_speed_x = abs(ball_speed_x)
+        bricks_x.pop(i);
+        bricks_y.pop(i);
+        break
 
     # 
     # draw everything
