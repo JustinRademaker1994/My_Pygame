@@ -9,7 +9,7 @@ import pygame, time
 #
 
 FPS = 30 # Frames Per Second
-SCREEN_WIDTH = 1280  * 0.8   # screensize in x-direction
+SCREEN__PERSON2_CHANGED_WIDTH = 1280  * 0.8   # screensize in x-direction
 SCREEN_HEIGHT = 720 * 0.8   # screensize in y-direction
 BALL_WIDTH = 16       # ballsize in x-direction in pixels
 BALL_HEIGHT = 16      # ballsize in y-direction in pixels
